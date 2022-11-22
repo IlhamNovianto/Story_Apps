@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Dicoding Story App V1</string>
+    <string name="avatar_incard">Foto Pengguna</string>
+    <string name="name_incard">Nama Pengguna</string>
+    <string name="desc_incard">Deskripsi</string>
+    <string name="username_Detail">Detail nama Pengguna</string>
+    <string name="userDesc_Detail">Detail Deskripsi</string>
+    <string name="imgDetailStory">Detail Gambar</string>
+    <string name="description_empty_msg">Silahkan, Isi deskripsi</string>
+    <string name="wrong_format_email">Format Email salah</string>
+    <string name="name_empty_msg">mohon isi username anda</string>
+    <string name="password_invalid_msg">Kata sandi minimal 6 karakter</string>
+    <string name="password">Kata Sandi</string>
+    <string name="register">Registrasi</string>
+    <string name="email">Email</string>
+    <string name="name">Nama</string>
+    <string name="registerBerhasil">Regristrasi Berhasil</string>
+    <string name="registergagal">Registrasi Gagal</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="description">Tambahkan Deskripsi</string>
+    <string name="upload">Unggah</string>
+    <string name="storyApp">Dicoding Story App</string>
+    <string name="android_intermediate">Android Intermediate</string>
+    <string name="login">Login</string>
+    <string name="dont_have_account">Tidak memiliki akun? Klik tombol dibawah</string>
+    <string name="story_user">Story User</string>
+    <string name="add">AddS tory</string>
+    <string name="setting">Pengaturan Bahasa</string>
+    <string name="logout">Keluar</string>
+    <string name="invalid_email">Email Tidak Valid</string>
+    <string name="choosepicture">Pilih Foto Galleri</string>
+    <string name="LoadSuccesfull">Load Berhasil</string>
+    <string name="upload_failed_msg">Unggah Gagal</string>
+    <string name="upload_sucsessful_msg">Unggah Berhasil</string>
+    <string name="null_desc_msg">Mohon, Isikan Deskripsi</string>
+    <string name="add_story">Tambah cerita</string>
+    <string name="open_maps">Buka Peta</string>
+    <string name="normal_type">Peta Normal</string>
+    <string name="satellite_type">Peta Satelit</string>
+    <string name="terrain_type">Peta Kontur</string>
+    <string name="hybrid_type">Peta Campuran</string>
+    <string name="text_location_must_enabled">Lokasi Harus Aktif</string>
+    <string name="retry">Mulai Lagi</string>
+    <string name="password_lenght">Kata sandi Terlalu Panjang</string>
+</resources>

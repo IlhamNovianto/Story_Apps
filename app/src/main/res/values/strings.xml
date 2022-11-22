@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">Dicoding Story App V1</string>
+    <string name="avatar_incard">Image User</string>
+    <string name="name_incard">Username</string>
+    <string name="desc_incard">Description</string>
+    <string name="username_Detail">Detail Username</string>
+    <string name="userDesc_Detail">Detail Description</string>
+    <string name="imgDetailStory">Detail Image</string>
+    <string name="description_empty_msg">Please Fill Description</string>
+    <string name="wrong_format_email">Email invalid</string>
+    <string name="name_empty_msg">Please, Fill Name</string>
+    <string name="password_invalid_msg">Password minimal 6 Character</string>
+    <string name="password">Password</string>
+    <string name="register">Register</string>
+    <string name="email">Email</string>
+    <string name="name">Name</string>
+    <string name="registerBerhasil">Regristration Sucsessfull</string>
+    <string name="registergagal">Register Filed</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="description">add Description</string>
+    <string name="upload">Upload</string>
+    <string name="storyApp">Dicoding Story App</string>
+    <string name="android_intermediate">Android Intermediate</string>
+    <string name="login">Login</string>
+    <string name="dont_have_account">Don`t Have Account? Click Here</string>
+    <string name="story_user">Story User</string>
+    <string name="add">AddS tory</string>
+    <string name="setting">Setting Language</string>
+    <string name="logout">Logout</string>
+    <string name="invalid_email">Email Invalid</string>
+    <string name="choosepicture">Choose Picture From Gallery</string>
+    <string name="LoadSuccesfull">Load Sucssesfull</string>
+    <string name="upload_failed_msg">Upload Failed</string>
+    <string name="upload_sucsessful_msg">Upload Sucsessful</string>
+    <string name="null_desc_msg">Please Fill Description</string>
+    <string name="add_story">add story</string>
+    <string name="open_maps">open maps</string>
+    <string name="title_activity_maps" translatable="false">MapsActivity</string>
+    <string name="normal_type">Normal Maps</string>
+    <string name="satellite_type">Satellite Maps</string>
+    <string name="terrain_type">Terrain Maps</string>
+    <string name="hybrid_type">Hybrid Maps</string>
+    <string name="retry">Retry</string>
+    <string name="text_location_must_enabled">Location Must be Enable</string>
+    <string name="password_lenght">Password too long</string>
+</resources>
