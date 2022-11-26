@@ -45,10 +45,15 @@ class UserPreference (
         }
     }
 
-
     fun getToken(): Flow<String> {
         return dataStore.data.map { preferences ->
             preferences[TOKEN] ?: ""
+        }
+    }
+
+    fun isLogin(): Flow<Boolean> {
+        return  dataStore.data.map { preferences ->
+            preferences[STATE] ?: false
         }
     }
 
@@ -56,12 +61,6 @@ class UserPreference (
         dataStore.edit { preferences ->
             preferences[TOKEN] = token
             preferences[STATE] = isLogin
-        }
-    }
-
-    fun isLogin(): Flow<Boolean> {
-        return  dataStore.data.map { preferences ->
-            preferences[STATE] ?: false
         }
     }
 

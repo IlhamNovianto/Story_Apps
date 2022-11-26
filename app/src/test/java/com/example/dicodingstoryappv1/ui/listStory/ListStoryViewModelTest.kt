@@ -19,7 +19,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.advanceUntilIdle
-import kotlinx.coroutines.test.runBlockingTest
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert
 import org.junit.Before
@@ -52,7 +51,7 @@ class ListStoryViewModelTest {
     }
 
     @Test
-    fun `set logout successfully`() = mainDispatcherRules.runBlockingTest {
+    fun `set logout successfully`() = runTest {
         listStoryViewModel.logout()
         Mockito.verify(mockUserPreference).logout()
     }
@@ -83,7 +82,7 @@ class ListStoryViewModelTest {
 
 
     @Test
-    fun `when Get Story Should Not Null and Return Success`() = runTest {
+    fun `when Get Story Should Not Null`() = runTest {
         val dummyStory = DataDummy.generateDummyStoryListResponse()
         val data: PagingData<ListStoryItem> = StoryPagingSource.snapshot(dummyStory)
         val expectedReturn = MutableLiveData<PagingData<ListStoryItem>>()
@@ -92,7 +91,6 @@ class ListStoryViewModelTest {
         Mockito.`when`(mockStoryRepository.getStories(dummyToken)).thenReturn(expectedReturn)
 
         val actualReturn: PagingData<ListStoryItem> = listStoryViewModel.getStory(dummyToken).getOrAwaitValue()
-
 
         val differ = AsyncPagingDataDiffer(
             diffCallback = StoryAdapter.DIFF_CALLBACK,

@@ -32,13 +32,13 @@ class MapsViewModelTest {
     @Mock
     private lateinit var storyRepository: StoryRepository
     private val mockUserPreference = Mockito.mock(UserPreference::class.java)
-    private lateinit var viewModel: MapsViewModel
+    private lateinit var mapsViewModel: MapsViewModel
     private val dummyToken = "jshdlakfjdshlfkjhluehfquiehf"
     private var dummyMaps = DataDummy.generateDummyMapsMarker()
 
     @Before
     fun setUp() {
-        viewModel = MapsViewModel(storyRepository, mockUserPreference)
+        mapsViewModel = MapsViewModel(storyRepository, mockUserPreference)
     }
 
     @Test
@@ -47,7 +47,7 @@ class MapsViewModelTest {
         expectedMarker.value = Result.Success(dummyMaps)
         Mockito.`when`(storyRepository.getStoryMaps(dummyToken, 1)).thenReturn(expectedMarker)
 
-        val actualStory = viewModel.getStoryMaps(dummyToken, 1).getOrAwaitValue()
+        val actualStory = mapsViewModel.getStoryMaps(dummyToken, 1).getOrAwaitValue()
 
         Mockito.verify(storyRepository).getStoryMaps(dummyToken, 1)
         Assert.assertNotNull(actualStory)
@@ -61,7 +61,7 @@ class MapsViewModelTest {
         expectedStory.value = Result.Error("Error")
         Mockito.`when`(storyRepository.getStoryMaps(dummyToken, 1)).thenReturn(expectedStory)
 
-        val actualStory = viewModel.getStoryMaps(dummyToken,1).getOrAwaitValue()
+        val actualStory = mapsViewModel.getStoryMaps(dummyToken,1).getOrAwaitValue()
 
         Assert.assertNotNull(actualStory)
         Assert.assertTrue(actualStory is Result.Error)
@@ -72,7 +72,7 @@ class MapsViewModelTest {
         val expectedToken = flowOf(dummyToken)
         Mockito.`when`(mockUserPreference.getToken()).thenReturn(expectedToken)
 
-        val actualToken = viewModel.getToken().getOrAwaitValue()
+        val actualToken = mapsViewModel.getToken().getOrAwaitValue()
 
         Mockito.verify(mockUserPreference).getToken()
         Assert.assertNotNull(actualToken)

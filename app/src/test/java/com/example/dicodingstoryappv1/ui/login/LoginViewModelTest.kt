@@ -32,7 +32,7 @@ class LoginViewModelTest {
     @Mock
     private lateinit var userPreference: UserPreference
     private lateinit var loginViewModel: LoginViewModel
-    private val dummyResult = DataDummy.generateDummyLoginResponseSuccess()
+    private val dummyResponse = DataDummy.generateDummyLoginResponseSuccess()
     private val dummyEmail = "dico@gmail.com"
     private val dummyPass = "123456"
     private val dummyToken = "jshdlakfjdshlfkjhluehfquiehf"
@@ -57,6 +57,7 @@ class LoginViewModelTest {
         Mockito.`when`(userPreference.getToken()).thenReturn(expectedToken)
 
         val actualToken = loginViewModel.getToken().getOrAwaitValue()
+
         Mockito.verify(userPreference).getToken()
         Assert.assertNotNull(actualToken)
         Assert.assertEquals(dummyToken, actualToken)
@@ -66,7 +67,7 @@ class LoginViewModelTest {
     @Test
     fun `when login() is Called Should Return Success and Data`() {
         val expectedResponse = MutableLiveData<Result<LoginResponse>>()
-        expectedResponse.value = Result.Success(dummyResult)
+        expectedResponse.value = Result.Success(dummyResponse)
         Mockito.`when`(userPreference.login(dummyEmail, dummyPass)).thenReturn(expectedResponse)
 
         val actualResponse =
@@ -75,7 +76,7 @@ class LoginViewModelTest {
         Mockito.verify(userPreference).login(dummyEmail, dummyPass)
         Assert.assertNotNull(actualResponse)
         Assert.assertTrue(true)
-        Assert.assertEquals(dummyResult, (actualResponse as Result.Success<*>).data)
+        Assert.assertEquals(dummyResponse, (actualResponse as Result.Success<*>).data)
     }
 
     @Test

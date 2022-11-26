@@ -24,7 +24,7 @@ class RegisterViewModelTest{
     @Mock
     private lateinit var userPreference: UserPreference
     private lateinit var registerViewModel: RegisterViewModel
-    private val dummy = DataDummy.generateDummyRegisterReponse()
+    private val dummyResponse = DataDummy.generateDummyRegisterReponse()
     private val dummynama = "dico"
     private val dummyemail = "dico123@gmail.com"
     private val dummypassword = "123456"
@@ -38,7 +38,7 @@ class RegisterViewModelTest{
     @Test
     fun `when register() is Called Should Not Null and Return Success`() {
         val expectedResponse = MutableLiveData<Result<RegisterResponse>>()
-        expectedResponse.value = Result.Success(dummy)
+        expectedResponse.value = Result.Success(dummyResponse)
         Mockito.`when`(userPreference.register(dummynama,dummyemail,dummypassword)).thenReturn(expectedResponse)
 
         val actualResponse = registerViewModel.register(dummynama,dummyemail,dummypassword).getOrAwaitValue()
@@ -46,7 +46,7 @@ class RegisterViewModelTest{
         Mockito.verify(userPreference).register(dummynama,dummyemail,dummypassword)
         Assert.assertNotNull(actualResponse)
         Assert.assertTrue(actualResponse is Result.Success)
-        Assert.assertEquals(dummy, (actualResponse as Result.Success).data)
+        Assert.assertEquals(dummyResponse, (actualResponse as Result.Success).data)
     }
 
     @Test

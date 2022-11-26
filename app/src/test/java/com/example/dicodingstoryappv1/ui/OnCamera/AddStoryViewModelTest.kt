@@ -58,7 +58,7 @@ class AddStoryViewModelTest{
     @Test
     fun `when add story is called Should Not Null and Return Success`() {
         val expectdeResponse = MutableLiveData<Result<AddNewStoryResponse>>()
-        expectdeResponse.value = Result.Success(dummyResponse)
+        expectdeResponse.value = Result.Success(dummyResponse)//true
 
         Mockito.`when`(mockStoryRepository.addStories
             ("token",
@@ -91,7 +91,7 @@ class AddStoryViewModelTest{
     @Test
     fun `when add story Error Should Return Error`() {
         val expectdeUplload = MutableLiveData<Result<AddNewStoryResponse>>()
-        expectdeUplload.value = Result.Error("ERROR")
+        expectdeUplload.value = Result.Error("Error")
         Mockito.`when`(mockStoryRepository.addStories(
             "token",
             dummyMultipart,

@@ -39,8 +39,6 @@ class MainActivity : AppCompatActivity() {
         setupViewModel()
         setupAction()
         setAnimation()
-
-
     }
 
     //fullscreen
