@@ -44,4 +44,11 @@
     <string name="retry">Retry</string>
     <string name="text_location_must_enabled">Location Must be Enable</string>
     <string name="password_lenght">Password too long</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="app_widget_description">This is an app widget description</string>
+    <string name="text_list_Story">My Story</string>
+    <string name="text_data_empty">Empty Data</string>
+    <string name="description_image_stackwidget">Image Stack Widget</string>
+    <string name="description_dark_background">background</string>
 </resources>

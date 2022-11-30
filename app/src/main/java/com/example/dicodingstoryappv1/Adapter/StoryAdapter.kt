@@ -10,12 +10,12 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.dicodingstoryappv1.api.response.ListStoryItem
+import com.example.dicodingstoryappv1.api.entity.StoryEntity
 import com.example.dicodingstoryappv1.databinding.CardUserBinding
 import com.example.dicodingstoryappv1.ui.detail.DetailActivity
 
 class StoryAdapter:
-    PagingDataAdapter<ListStoryItem, StoryAdapter.ListViewHolder>(DIFF_CALLBACK){
+    PagingDataAdapter<StoryEntity, StoryAdapter.ListViewHolder>(DIFF_CALLBACK){
     //cara Lain dari Object constructur di atas adalah :private val story = ArrayList<CardStory>()
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ListViewHolder {
@@ -33,7 +33,7 @@ class StoryAdapter:
 
     class ListViewHolder (private val binding: CardUserBinding):
         RecyclerView.ViewHolder(binding.root){
-        fun bind(story: ListStoryItem) {
+        fun bind(story: StoryEntity) {
             Glide.with(itemView.context)
                 .load(story.photoUrl)
                 .into(binding.ivAvatarIncard)
@@ -58,15 +58,15 @@ class StoryAdapter:
 
     }
     companion object {
-        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ListStoryItem>() {
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<StoryEntity>() {
 
-            override fun areItemsTheSame(oldItem: ListStoryItem, newItem: ListStoryItem): Boolean {
+            override fun areItemsTheSame(oldItem: StoryEntity, newItem: StoryEntity): Boolean {
                 return oldItem == newItem
             }
 
             override fun areContentsTheSame(
-                oldItem: ListStoryItem,
-                newItem: ListStoryItem
+                oldItem: StoryEntity,
+                newItem: StoryEntity
             ): Boolean {
                 return oldItem.id == newItem.id
             }

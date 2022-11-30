@@ -5,8 +5,15 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Matrix
+import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Environment
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.request.target.CustomTarget
+import com.bumptech.glide.request.transition.Transition
+import com.example.dicodingstoryappv1.R
 import java.io.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -57,3 +64,30 @@ fun reduceFileImage(file: File): File {
     return file
 }
 
+fun String?.toBitmap(context: Context): Bitmap {
+    var bitmap: Bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.ic_loading_image)
+
+    val option = RequestOptions()
+        .error(R.drawable.ic_loading_image)
+        .diskCacheStrategy(DiskCacheStrategy.ALL)
+
+    try {
+        Glide.with(context)
+            .setDefaultRequestOptions(option)
+            .asBitmap()
+            .load(this)
+            .into(object : CustomTarget<Bitmap>() {
+                override fun onLoadCleared(placeholder: Drawable?) {}
+                override fun onResourceReady(
+                    resource: Bitmap,
+                    transition: Transition<in Bitmap>?
+                ) {
+                    bitmap = resource
+                }
+            })
+    } catch (e: Exception) {
+        e.printStackTrace()
+    }
+
+    return bitmap
+}

@@ -12,7 +12,7 @@ import com.example.dicodingstoryappv1.Adapter.StoryAdapter
 import com.example.dicodingstoryappv1.DataDummy
 import com.example.dicodingstoryappv1.MainCoroutineRule
 import com.example.dicodingstoryappv1.Preference.UserPreference
-import com.example.dicodingstoryappv1.api.response.ListStoryItem
+import com.example.dicodingstoryappv1.api.entity.StoryEntity
 import com.example.dicodingstoryappv1.api.response.StoryRepository
 import com.example.dicodingstoryappv1.getOrAwaitValue
 import kotlinx.coroutines.Dispatchers
@@ -84,13 +84,13 @@ class ListStoryViewModelTest {
     @Test
     fun `when Get Story Should Not Null`() = runTest {
         val dummyStory = DataDummy.generateDummyStoryListResponse()
-        val data: PagingData<ListStoryItem> = StoryPagingSource.snapshot(dummyStory)
-        val expectedReturn = MutableLiveData<PagingData<ListStoryItem>>()
+        val data: PagingData<StoryEntity> = StoryPagingSource.snapshot(dummyStory)
+        val expectedReturn = MutableLiveData<PagingData<StoryEntity>>()
         expectedReturn.value = data
 
         Mockito.`when`(mockStoryRepository.getStories(dummyToken)).thenReturn(expectedReturn)
 
-        val actualReturn: PagingData<ListStoryItem> = listStoryViewModel.getStory(dummyToken).getOrAwaitValue()
+        val actualReturn: PagingData<StoryEntity> = listStoryViewModel.getStory(dummyToken).getOrAwaitValue()
 
         val differ = AsyncPagingDataDiffer(
             diffCallback = StoryAdapter.DIFF_CALLBACK,
@@ -107,18 +107,18 @@ class ListStoryViewModelTest {
     }
 }
 
-class StoryPagingSource : PagingSource<Int, LiveData<List<ListStoryItem>>>() {
+class StoryPagingSource : PagingSource<Int, LiveData<List<StoryEntity>>>() {
     companion object {
-        fun snapshot(items: List<ListStoryItem>): PagingData<ListStoryItem> {
+        fun snapshot(items: List<StoryEntity>): PagingData<StoryEntity> {
             return PagingData.from(items)
         }
     }
 
-    override fun getRefreshKey(state: PagingState<Int, LiveData<List<ListStoryItem>>>): Int {
+    override fun getRefreshKey(state: PagingState<Int, LiveData<List<StoryEntity>>>): Int {
         return 0
     }
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, LiveData<List<ListStoryItem>>> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, LiveData<List<StoryEntity>>> {
         return LoadResult.Page(emptyList(), 0, 1)
     }
 

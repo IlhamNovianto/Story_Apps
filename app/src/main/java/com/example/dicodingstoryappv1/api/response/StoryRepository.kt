@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import androidx.paging.*
 import com.example.dicodingstoryappv1.api.ApiService
+import com.example.dicodingstoryappv1.api.entity.StoryEntity
 import com.example.dicodingstoryappv1.database.StoryDatabase
 import com.example.dicodingstoryappv1.database.StoryRemoteMediator
 import okhttp3.MediaType.Companion.toMediaType
@@ -16,7 +17,7 @@ class StoryRepository(
     private val storyDatabase: StoryDatabase,
     private val apiService: ApiService
 ) {
-    fun getStories(token: String): LiveData<PagingData<ListStoryItem>> {
+    fun getStories(token: String): LiveData<PagingData<StoryEntity>> {
         @OptIn(ExperimentalPagingApi::class)
         return Pager(
             config = PagingConfig(

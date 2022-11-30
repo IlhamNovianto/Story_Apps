@@ -1,8 +1,6 @@
 package com.example.dicodingstoryappv1.api.response
 
 import android.os.Parcelable
-import androidx.room.Entity
-import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
@@ -20,10 +18,8 @@ data class GetAllStoryResponse(
 )
 
 @Parcelize
-@Entity(tableName = "story")
 data class ListStoryItem(
     @field:SerializedName("id")
-    @PrimaryKey
     val id: String,
 
     @field:SerializedName("photoUrl")

@@ -1,5 +1,6 @@
 package com.example.dicodingstoryappv1
 
+import com.example.dicodingstoryappv1.api.entity.StoryEntity
 import com.example.dicodingstoryappv1.api.response.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -68,10 +69,10 @@ object DataDummy {
     }
 
 //List Story
-    fun generateDummyStoryListResponse(): List<ListStoryItem> {
-        val items: MutableList<ListStoryItem> = arrayListOf()
+    fun generateDummyStoryListResponse(): List<StoryEntity> {
+        val items: MutableList<StoryEntity> = arrayListOf()
         for (i in 0..100) {
-            val story = ListStoryItem(
+            val story = StoryEntity(
                 description = "desc $i",
                 id = "id $i",
                 lat = i.toDouble(),
