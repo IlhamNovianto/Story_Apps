@@ -44,4 +44,11 @@
     <string name="text_location_must_enabled">Lokasi Harus Aktif</string>
     <string name="retry">Mulai Lagi</string>
     <string name="password_lenght">Kata sandi Terlalu Panjang</string>
+    <string name="appwidget_text">contoh</string>
+    <string name="add_widget">Tambah Widget</string>
+    <string name="app_widget_description">Ini deskripsi widget</string>
+    <string name="text_list_Story">CeritaKu</string>
+    <string name="text_data_empty">Data Kosong</string>
+    <string name="description_image_stackwidget">Gambar Stack Widget</string>
+    <string name="description_dark_background">Latar Belakang</string>
 </resources>
