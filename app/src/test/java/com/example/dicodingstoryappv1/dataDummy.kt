@@ -24,7 +24,7 @@ object DataDummy {
             )
             stories.add(story)
         }
-        return GetAllStoryResponse(stories)
+        return GetAllStoryResponse(stories,false, "Error")
     }
 
 //login dummy
@@ -38,8 +38,8 @@ object DataDummy {
    private fun  generateDummyLoginResult() : LoginResult {
         return LoginResult(
             "dico",
-            "dico123@gmail.com",
-            "token"
+            "dico123@gmail",
+            "ini token"
         )
     }
 
@@ -71,7 +71,7 @@ object DataDummy {
 //List Story
     fun generateDummyStoryListResponse(): List<StoryEntity> {
         val items: MutableList<StoryEntity> = arrayListOf()
-        for (i in 0..100) {
+        for (i in 0..10) {
             val story = StoryEntity(
                 description = "desc $i",
                 id = "id $i",

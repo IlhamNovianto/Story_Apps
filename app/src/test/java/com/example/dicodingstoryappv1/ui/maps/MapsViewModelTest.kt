@@ -59,6 +59,7 @@ class MapsViewModelTest {
     fun `when Network Error Should Return Error`() {
         val expectedStory = MutableLiveData<Result<GetAllStoryResponse>>()
         expectedStory.value = Result.Error("Error")
+
         Mockito.`when`(storyRepository.getStoryMaps(dummyToken, 1)).thenReturn(expectedStory)
 
         val actualStory = mapsViewModel.getStoryMaps(dummyToken,1).getOrAwaitValue()
@@ -68,7 +69,7 @@ class MapsViewModelTest {
     }
 
     @Test
-    fun `get token successfully`() {
+    fun `getToken success`() {
         val expectedToken = flowOf(dummyToken)
         Mockito.`when`(mockUserPreference.getToken()).thenReturn(expectedToken)
 

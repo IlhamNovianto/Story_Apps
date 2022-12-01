@@ -47,18 +47,27 @@ class StoryRepository(
                     desc,
                     latitude,
                     longitude)
-            emit(Result.Success(result))
+            if (result.error) {
+                emit(Result.Error(result.message))
+            } else {
+                emit(Result.Success(result))
+            }
         } catch (e:Exception) {
             Log.d("StoryRepository", "addStories: ${e.message.toString()}")
             emit(Result.Error(e.message.toString()))
         }
     }
 
-    fun getStoryMaps(token: String, location: Int): LiveData<Result<GetAllStoryResponse>> = liveData {
+    fun getStoryMaps(token: String, location: Int):
+            LiveData<Result<GetAllStoryResponse>> = liveData {
         emit(Result.Loading)
         try {
             val result = apiService.getMarker("Bearer $token", location)
+            if (result.error) {
+                emit(Result.Error(result.message))
+            } else {
             emit(Result.Success(result))
+            }
         } catch (e:Exception) {
             emit(Result.Error(e.message.toString()))
         }

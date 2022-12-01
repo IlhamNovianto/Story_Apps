@@ -23,7 +23,11 @@ class UserPreference (
         emit(Result.Loading)
         try {
             val result = apiService.login(email, password)
-            emit(Result.Success(result))
+            if (result.error) {
+                emit(Result.Error(result.message))
+            } else {
+                emit(Result.Success(result))
+            }
         } catch (e:Exception) {
             Log.d("UserRepository", "Login: ${e.message.toString()}")
             emit(Result.Error(e.message.toString()))
@@ -38,7 +42,11 @@ class UserPreference (
         emit(Result.Loading)
         try {
             val result = apiService.register(name, email, password)
-            emit(Result.Success(result))
+            if (result.error){
+                emit(Result.Error(result.message))
+            }else {
+                emit(Result.Success(result))
+            }
         } catch (e:Exception) {
             Log.d("UserRepository", "Register: ${e.message.toString()}")
             emit(Result.Error(e.message.toString()))

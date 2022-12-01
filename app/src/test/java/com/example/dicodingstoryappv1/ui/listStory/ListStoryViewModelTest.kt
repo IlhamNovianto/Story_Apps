@@ -18,6 +18,7 @@ import com.example.dicodingstoryappv1.getOrAwaitValue
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert
@@ -51,13 +52,15 @@ class ListStoryViewModelTest {
     }
 
     @Test
-    fun `set logout successfully`() = runTest {
+    fun `set logout success`() = runTest {
         listStoryViewModel.logout()
         Mockito.verify(mockUserPreference).logout()
+        Assert.assertEquals(listStoryViewModel.logout(),
+            mockUserPreference.logout())
     }
 
     @Test
-    fun `get session login successfully`() {
+    fun `get session isLogin() success`() {
         val expectedIslogin = flowOf(dummySession)
         Mockito.`when`(mockUserPreference.isLogin()).thenReturn(expectedIslogin)
 
@@ -68,9 +71,8 @@ class ListStoryViewModelTest {
     }
 
     @Test
-    fun `get token successfully`() {
+    fun `getToken() success`() {
         val expectedToken = flowOf(dummyToken)
-
         Mockito.`when`(mockUserPreference.getToken()).thenReturn(expectedToken)
 
         val actualToken = listStoryViewModel.getToken().getOrAwaitValue()

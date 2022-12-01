@@ -35,7 +35,7 @@ class LoginViewModelTest {
     private val dummyResponse = DataDummy.generateDummyLoginResponseSuccess()
     private val dummyEmail = "dico@gmail.com"
     private val dummyPass = "123456"
-    private val dummyToken = "jshdlakfjdshlfkjhluehfquiehf"
+    private val dummyToken = "Ini Token"
 
 
     @Before
@@ -43,26 +43,22 @@ class LoginViewModelTest {
         loginViewModel = LoginViewModel(userPreference)
     }
 
-
     @OptIn(ExperimentalCoroutinesApi::class)
     @Test
-    fun `when set token`()= runTest {
+    fun `when set token return true`()= runTest {
         loginViewModel.setToken(dummyToken, true)
         Mockito.verify(userPreference).setToken(dummyToken, true)
     }
 
     @Test
-    fun `when get token Success`()  {
+    fun `when get token not null`()  {
         val expectedToken = flowOf(dummyToken)
         Mockito.`when`(userPreference.getToken()).thenReturn(expectedToken)
-
         val actualToken = loginViewModel.getToken().getOrAwaitValue()
-
         Mockito.verify(userPreference).getToken()
         Assert.assertNotNull(actualToken)
         Assert.assertEquals(dummyToken, actualToken)
     }
-
 
     @Test
     fun `when login() is Called Should Return Success and Data`() {

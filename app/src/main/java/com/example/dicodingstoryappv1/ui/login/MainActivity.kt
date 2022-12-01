@@ -12,8 +12,6 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.example.dicodingstoryappv1.R
-
 import com.example.dicodingstoryappv1.api.response.Result
 import com.example.dicodingstoryappv1.databinding.ActivityMainBinding
 import com.example.dicodingstoryappv1.ui.listStory.ListStoryActivity
@@ -94,11 +92,12 @@ class MainActivity : AppCompatActivity() {
                                             Toast.LENGTH_SHORT
                                         ).show()
                                     } else {
-                                        val token = data.loginResult?.token ?: ""
+                                        val token = data.loginResult.token
                                         loginViewModel.setToken(token, true)
                                     }
                                 }
                                 is Result.Error -> {
+                                    showLoading(false)
                                     Toast.makeText(this@MainActivity,
                                         "Login Failed",
                                         Toast.LENGTH_SHORT).show()
