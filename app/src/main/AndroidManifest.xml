@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.dicodingstoryappv1">
-
     <!-- location permission -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- internet permission -->
@@ -35,6 +34,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DicodingStoryAppV1"
         tools:targetApi="31">
+
+
         <receiver
             android:name=".widget.StoryAppWidget"
             android:exported="false">
@@ -50,7 +51,6 @@
         <service
             android:name="com.example.dicodingstoryappv1.widget.StackWidgetService"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
-
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
@@ -73,24 +73,32 @@
         <activity
             android:name="com.example.dicodingstoryappv1.ui.OnCamera.AddStoryActivity"
             android:exported="false" />
-        <activity
-            android:name="com.example.dicodingstoryappv1.ui.register.RegisterActivity"
-            android:exported="false" />
+
         <activity
             android:name="com.example.dicodingstoryappv1.ui.detail.DetailActivity"
             android:exported="false" />
         <activity
             android:name="com.example.dicodingstoryappv1.ui.listStory.ListStoryActivity"
             android:exported="false" />
+
         <activity
-            android:name="com.example.dicodingstoryappv1.ui.login.MainActivity"
-            android:exported="true">
+            android:name=".splashscreen.SplashScreenActivity"
+            android:exported="true"
+            android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name="com.example.dicodingstoryappv1.ui.login.MainActivity"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name="com.example.dicodingstoryappv1.ui.register.RegisterActivity"
+            android:exported="false" />
 
         <provider
             android:name="com.example.dicodingstoryappv1.contentprovider.StoryContentProvider"
@@ -99,7 +107,6 @@
             android:exported="true"
             android:readPermission="com.example.dicodingstoryappv1.READ_DATABASE"
             android:writePermission="com.example.dicodingstoryappv1.WRITE_DATABASE" />
-
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.dicodingstoryappv1"

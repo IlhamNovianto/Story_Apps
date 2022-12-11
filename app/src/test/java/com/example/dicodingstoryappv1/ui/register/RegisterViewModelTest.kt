@@ -25,10 +25,10 @@ class RegisterViewModelTest{
     private lateinit var userPreference: UserPreference
     private lateinit var registerViewModel: RegisterViewModel
     private val dummyResponse = DataDummy.generateDummyRegisterReponse()
+
     private val dummynama = "dico"
     private val dummyemail = "dico123@gmail.com"
     private val dummypassword = "123456"
-
 
     @Before
     fun setUp() {

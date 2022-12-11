@@ -36,7 +36,8 @@ class AddStoryViewModelTest{
     private var dummyMultipart = DataDummy.generateDummyMultipartFile()
     private var dummyDescription = DataDummy.generateDummyRequestBody()
     private val dummyResponse = DataDummy.generateDummyStoryyResponseSuccess()
-    private val dummyToken = "jshdlakfjdshlfkjhluehfquiehf"
+    private val massageError : String = "Upload Gagal"
+    private val dummyToken: String = "adkhfgkajhsdfaahdsfkalgdsjfh"
 
     @Before
     fun setUp() {
@@ -57,51 +58,50 @@ class AddStoryViewModelTest{
 
     @Test
     fun `when add story is called Should Not Null and Return Success`() {
-        val expectdeResponse = MutableLiveData<Result<AddNewStoryResponse>>()
-        expectdeResponse.value = Result.Success(dummyResponse)//true
+        val responseUpload = MutableLiveData<Result<AddNewStoryResponse>>()
+        responseUpload.value = Result.Success(dummyResponse)
 
         Mockito.`when`(mockStoryRepository.addStories
             ("token",
             dummyMultipart,
             dummyDescription,
-            "11.232",
-            "11.232")
-        ).thenReturn(expectdeResponse)
+            "20.00",
+            "20.00")
+        ).thenReturn(responseUpload)
 
-        val actualUplload =
+        val actualResponse =
             addStoryViewModel.addStory(
                 "token",
                 dummyMultipart,
                 dummyDescription,
-                "11.232",
-                "11.232"
+                "20.00",
+                "20.00"
             ).getOrAwaitValue()
 
         Mockito.verify(mockStoryRepository).addStories(
             "token",
             dummyMultipart,
             dummyDescription,
-            "11.232",
-            "11.232")
-        Assert.assertNotNull(actualUplload)
-        Assert.assertTrue(actualUplload is Result.Success)
-        Assert.assertEquals(dummyResponse, (actualUplload as Result.Success).data)
+            "20.00",
+            "20.00")
+        Assert.assertNotNull(actualResponse)
+        Assert.assertTrue(actualResponse is Result.Success)
+        Assert.assertEquals(dummyResponse, (actualResponse as Result.Success).data)
     }
 
     @Test
-    fun `when add story Error Should Return Error`() {
-        val expectdeUplload = MutableLiveData<Result<AddNewStoryResponse>>()
-        expectdeUplload.value = Result.Error("Error")
+    fun `when add story field Should Return Error`() {
+        val responseUpload = MutableLiveData<Result<AddNewStoryResponse>>()
+        responseUpload.value = Result.Error(massageError)
         Mockito.`when`(mockStoryRepository.addStories(
             "token",
             dummyMultipart,
             dummyDescription,
             "11.232",
             "11.232"))
-            .thenReturn(
-                expectdeUplload
-            )
-        val actualUplload = addStoryViewModel.addStory(
+            .thenReturn(responseUpload)
+
+        val actualResponse = addStoryViewModel.addStory(
                 "token",
                 dummyMultipart,
                 dummyDescription,
@@ -114,8 +114,8 @@ class AddStoryViewModelTest{
             dummyDescription,
             "11.232",
             "11.232")
-        Assert.assertNotNull(actualUplload)
-        Assert.assertTrue(actualUplload is Result.Error)
-
+        Assert.assertNotNull(actualResponse)
+        Assert.assertTrue(actualResponse is Result.Error)
+        Assert.assertEquals(massageError, (actualResponse as Result.Error).error)
     }
 }

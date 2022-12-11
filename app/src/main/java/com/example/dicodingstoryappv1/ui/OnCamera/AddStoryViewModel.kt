@@ -20,8 +20,8 @@ class AddStoryViewModel(
         token: String,
         photo: MultipartBody.Part,
         desc: RequestBody,
-        lat: String,
-        lon: String) =
+        lat : String? = null,
+        lon: String? = null ) =
         storyRepository.addStories(
             token, photo, desc, lat, lon)
 }

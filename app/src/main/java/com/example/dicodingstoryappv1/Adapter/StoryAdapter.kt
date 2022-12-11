@@ -14,9 +14,7 @@ import com.example.dicodingstoryappv1.api.entity.StoryEntity
 import com.example.dicodingstoryappv1.databinding.CardUserBinding
 import com.example.dicodingstoryappv1.ui.detail.DetailActivity
 
-class StoryAdapter:
-    PagingDataAdapter<StoryEntity, StoryAdapter.ListViewHolder>(DIFF_CALLBACK){
-    //cara Lain dari Object constructur di atas adalah :private val story = ArrayList<CardStory>()
+class StoryAdapter: PagingDataAdapter<StoryEntity, StoryAdapter.ListViewHolder>(DIFF_CALLBACK){
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ListViewHolder {
         val binding =
@@ -25,7 +23,7 @@ class StoryAdapter:
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val data = getItem(position)
+        val data = getItem(position) //getItem = StoryEntity?
         if (data != null) {
             holder.bind(data)
         }

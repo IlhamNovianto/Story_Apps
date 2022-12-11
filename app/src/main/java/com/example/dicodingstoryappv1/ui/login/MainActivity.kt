@@ -55,6 +55,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupViewModel() {
         val factory: UserFactoryViewModel = UserFactoryViewModel.getInstance(this)
+
         loginViewModel = ViewModelProvider(this, factory) [LoginViewModel::class.java]
         loginViewModel.getToken().observe(this) {token ->
             if (token.isNotEmpty()) {
@@ -85,15 +86,21 @@ class MainActivity : AppCompatActivity() {
                                 is Result.Success -> {
                                     showLoading(false)
                                     val data = result.data
-                                    if (data.error == true) {
+                                    if (!data.error) {
+                                        val token = data.loginResult.token
+                                        loginViewModel.setToken(token, true)
                                         Toast.makeText(
                                             this@MainActivity,
-                                            "Login Sucsessful",
+                                            "Login Succsesfuly",
                                             Toast.LENGTH_SHORT
                                         ).show()
                                     } else {
-                                        val token = data.loginResult.token
-                                        loginViewModel.setToken(token, true)
+                                        Toast.makeText(
+                                        this@MainActivity,
+                                        data.message,
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+
                                     }
                                 }
                                 is Result.Error -> {

@@ -33,13 +33,13 @@ class StoryRepository(
         token: String,
         photo: MultipartBody.Part,
         desc: RequestBody,
-        lat: String,
-        lon: String
+        lat: String? = null,
+        lon: String? = null
     ): LiveData<Result<AddNewStoryResponse>> = liveData {
         emit(Result.Loading)
         try {
-            val latitude = lat.toRequestBody("text/plain".toMediaType())
-            val longitude = lon.toRequestBody("text/plain".toMediaType())
+            val latitude = lat?.toRequestBody("text/plain".toMediaType())
+            val longitude = lon?.toRequestBody("text/plain".toMediaType())
             val result =
                 apiService.postStory(
                     "Bearer $token",

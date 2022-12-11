@@ -123,6 +123,8 @@ class AddStoryActivity : AppCompatActivity() {
                         _longitude = location.longitude
                         Toast.makeText(this, "Location Saved", Toast.LENGTH_SHORT).show()
                     } else {
+                        _latitude ?: String()
+                        _longitude ?: String()
                         Toast.makeText(this, "Location Not Found", Toast.LENGTH_SHORT).show()
                     }
 
@@ -190,10 +192,9 @@ class AddStoryActivity : AppCompatActivity() {
                     token,
                     imgMultipart,
                     description,
-                    _latitude.toString(),
-                    _longitude.toString()
+                    _latitude?.toString(),
+                    _longitude?.toString()
                 ).observe(this) { result ->
-                    if (result != null) {
                         when (result) {
                             is Result.Loading -> {
                                 showLoading(true)
@@ -216,7 +217,6 @@ class AddStoryActivity : AppCompatActivity() {
                                 ).show()
                             }
                         }
-                    }
                 }
             }
         }

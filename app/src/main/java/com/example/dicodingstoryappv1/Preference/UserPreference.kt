@@ -65,17 +65,15 @@ class UserPreference (
         }
     }
 
-    suspend fun setToken(token: String, isLogin: Boolean) {
-        dataStore.edit { preferences ->
-            preferences[TOKEN] = token
-            preferences[STATE] = isLogin
-        }
+     suspend fun setState(token: String, isLogin: Boolean) { dataStore.edit {
+            preferences ->
+             preferences[TOKEN] = token
+             preferences[STATE] = isLogin
+     }
     }
-
     suspend fun logout() {
         dataStore.edit { preferences ->
-            preferences[TOKEN] = ""
-            preferences[STATE] = false
+            preferences.clear()
         }
     }
     companion object {
@@ -83,6 +81,7 @@ class UserPreference (
         private var INSTANCE: UserPreference? = null
         private val TOKEN = stringPreferencesKey("token")
         private val STATE = booleanPreferencesKey("state")
+
         fun getInstance(dataStore: DataStore<Preferences>, apiService: ApiService): UserPreference {
             return INSTANCE ?: synchronized(this) {
                 val instance = UserPreference(dataStore, apiService)

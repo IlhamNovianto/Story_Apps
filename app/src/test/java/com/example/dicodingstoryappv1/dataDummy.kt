@@ -35,11 +35,11 @@ object DataDummy {
             message = "Success"
         )
     }
-   private fun  generateDummyLoginResult() : LoginResult {
+    fun  generateDummyLoginResult() : LoginResult {
         return LoginResult(
             "dico",
             "dico123@gmail",
-            "ini token"
+            "lkshalkjdhfdf"
         )
     }
 
@@ -85,4 +85,6 @@ object DataDummy {
         }
         return items
     }
+
+
 }

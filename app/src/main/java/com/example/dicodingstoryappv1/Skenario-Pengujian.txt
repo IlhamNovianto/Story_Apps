@@ -1,95 +1,87 @@
 UNIT TEST
-# AddStoryViewModelTest
+# AddStoryViewModelTest cek
     -> `get token success`()
-        memastikan actualToken tidak Kosong
-        Nilai Token dummyToken sama dengan ActualToken
+        - Memastikan actualToken tidak Kosong
+        - Memastikan Token dummyToken sama dengan ActualToken
 
     ->  `when add story is called Should Not Null and Return Success`()
-        Ketika berhasil menambahkan story,
-  	    Result.Success bernilai true,
-	    expectedResponse sama dengan Result.Success(dummyResponse),
-	    expectedResponse dan actualUpload sama
+  	    - Memastikan Object ActualResponse tidak kosong/null
+	    - Memastikan response ActualResponse sama dengan Result.Succses,
+	    - Memastikan Variable Data Upload sesuai
 
-	->  `when add story Error Should Return Error`()
-	    Ketika gagal mengUnggah story,
-	    Result.Error bernilai false,  dan menampilakn pesan error.
-	    actualResponse dan Result.Error sama, memiliki value yang sama, yaitu pesan error
+	->  `when add story field Should Return Error`()
+	    - ActualResponse dan Result.Error sama.
+	    - Result.Error bernilai True
+	    - Memastikan result.error dengan actualResponse sama
 
-# LoginViewModelTest
-    -> `when set token return true`()
-        Ketika sukses mendapatkan token maka isLogin Bernilai True
-        yang berfungsi sebagai Authentifikasi user
+# LoginViewModelTest Cek
+    -> `when set token funtion call true`()
+        - Memastikan LoginResult memiliki token
+        - jika ya, maka akan memanggil funtion yang akan memverivikasi token dan state
 
 	-> `when get token not null`()
-        memastikan actualToken tidak Kosong
-        Nilai Token dummyToken sama dengan ActualToken
+        - memastikan actualToken tidak Kosong
+        - Nilai Token dummyToken sama dengan ActualToken
 
 	-> `when login() is Called Should Return Success and Data`
-	    Ketika berhasil login,
-	    Result.Success bernilai true,
-	    Memastikan bahwa actualResponse tidak kosong,
-	    actualRespon sama dengan Result.Success,
-	    dummyResponse sama dengan actualResponse,
-	    yang berarti data mengembalikan nilai yang sama berupa data user yakni name, userId dan token
+	    - Memastikan bahwa actualResponse tidak kosong,
+	    - actualRespon sama dengan Result.Success,
+	    - dummyResponse sama dengan actualResponse,
 
 	-> `when Network Error Should Return Error`()
-	    Ketika gagal login,
-	    ResultResponse.Error bernilai false, menampilkan pesan error
-	    Memastikan bahwa actualResponse tidak kosong,
-	    actualResponse dan ResultResponse.Error sama,
-	    yang berarti mengembalikan data yang sama berupa error
+	    - Result Response.Error bernilai true, menampilkan String "error"
+	    - Memastikan bahwa actualResponse tidak kosong,
+	    - actualResponse dan ResultResponse.Error sama
 
-* ListStoryViewModelTest
+* ListStoryViewModelTest cek
     -> `set logout success`()
-        proses logout ListStoryVideModel dan userPreference sama.
-        logout() Menghapus session menjadi Token null dan islogin false
+         - Memverivikasi funtion logout() dipanggil
 
 	-> `get session login success`()
-    	Ketika berhasil LoginSession bernilai true,
-	    Memastikan bahwa datastore tidak null.
-	    Hasil dummysession dan ActualIslogin sama
+    	- Ketika berhasil LoginSession bernilai true,
+	    - Memastikan bahwa datastore tidak null.
+	    - Hasil dummysession dan ActualIslogin sama
 
 	-> `getToken() success`()
-	    Ketika berhasil mendapatkan String Token,
-	    Memastikan bahwa dataStore tidak null.
-	    Hasil dummyToken dan ActualToken sama.
+	    - Ketika berhasil mendapatkan String Token,
+	    - Memastikan bahwa dataStore tidak null.
+	    - Hasil dummyToken dan ActualToken sama.
 
 	-> `when Get Story Should Not Null`()
-	    Ketika fungsi getStories() dipanggil maka mengembalikan data(Paging<Data>)
-	    Memastikan data Tidak Bernilai Null.
-	    Data DummyStory dan Differ.snapshot() sama, untuk Memastikan mengembalikan Story response yang benar
-	    dummyStory.size dan differ.snapshot().size Sama, untuk Memastikan jumlah data sesuai dengan yang diharapkan.
-	    dummyStory[0].name dan differ.snapshot()[0]?.name Sama, untuk Memastikan nilai Value sesuai dengan variablenya.
+	    - Ketika fungsi getStories() dipanggil maka mengembalikan data(Paging<Data>)
+	    - Memastikan data Tidak Bernilai Null.
+	    - Data DummyStory dan Differ.snapshot() sama, untuk Memastikan mengembalikan Story response yang benar
+	    - dummyStory.size dan differ.snapshot().size Sama, untuk Memastikan jumlah data sesuai dengan yang diharapkan.
+	    - dummyStory[0].name dan differ.snapshot()[0]?.name Sama, untuk Memastikan nilai Value sesuai dengan variablenya.
 
-* MapsViewModelTest
+* MapsViewModelTest cek
 	-> `when get Stories is Called Should Not Null and Return Success`()
-	    Ketika berhasil mendapatkan data story map,
-	    Result.Success bernilai true,
-	    Memastikan bahwa actualStory tidak kosong,
-	    ActualStory dan Result.Success sama,
-	    Memastikan bahwa ukuran data asli(actualStory) dengan data dummyMaps sama
+	    - Result.Success bernilai true,
+	    - Memastikan bahwa actualStory tidak kosong,
+	    - ActualStory dan Result.Success sama,
+	    - Memastikan data(actualStory) mengembalikan data sama dengan data dummyMaps sama
 
 	-> `when Network Error Should Return Error`()
-	    Ketika gagal mendapatkan data story map,
-	    Result.Error bernilai false dan menampilakn pesan error,
-	    memastikan bahwa actualStory tidak kosong, menampilkan pesan error
-	    actualStory dan Result.Error memiliki value yang sama, yaitu pesan error
+	    - Ketika gagal mendapatkan data story map,
+	    - Result.Error bernilai false dan menampilakn pesan error,
+	    - memastikan bahwa actualStory tidak kosong, menampilkan pesan error
+	    - actualStory dan Result.Error memiliki value yang sama, yaitu pesan error
 
 	-> `getToken success`()
-	    Ketika berhasil mendapatkan String Token,
-	    Memastikan bahwa dataStore tidak null.
-	    Hasil dummyToken dan ActualToken sama.
+	    - Ketika berhasil mendapatkan String Token,
+	    - Memastikan bahwa dataStore tidak null.
+	    - Hasil dummyToken dan ActualToken sama.
 
 * RegisterViewModelTest
 	-> `when register() is Called Should Not Null and Return Success`()
-	    Ketika berhasil melakukan register
-	    Result.Success bernilai true,
-	    Memastikan bahwa actualResponse tidak kosong,
-	    actualResponse dan Result.Success sama,
-	    Memastikan bahwa data dummyRespon dan data actualResponse sama
+	    - Ketika berhasil melakukan register
+	    - Result.Success bernilai true,
+	    - Memastikan bahwa actualResponse tidak kosong,
+	    - actualResponse dan Result.Success sama,
+	    - Memastikan bahwa data dummyRespon dan data actualResponse sama
 
 	-> `when Network Error Should Return Error`()
-	    Ketika gagal melakukan register
-	    Result.Error bernilai false, dan menampilkan pesan error,
-	    Memastikan bahwa actualResponse tidak kosong, berisi pesan error,
-	    actualResponse dan Result.Error
+	    - Ketika gagal melakukan register
+	    - Result.Error bernilai false, dan menampilkan pesan error,
+	    - Memastikan bahwa actualResponse tidak kosong, berisi pesan error,
+	    - actualResponse dan Result.Error

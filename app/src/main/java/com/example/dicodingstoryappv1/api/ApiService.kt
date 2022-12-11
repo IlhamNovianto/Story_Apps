@@ -42,7 +42,7 @@ interface ApiService {
         @Part("description") description : RequestBody,
 
         //optional
-        @Part("lat") lat: RequestBody?,
-        @Part("lon") lon: RequestBody?
+        @Part("lat") lat: RequestBody? = null,
+        @Part("lon") lon: RequestBody? = null
     ): AddNewStoryResponse
 }

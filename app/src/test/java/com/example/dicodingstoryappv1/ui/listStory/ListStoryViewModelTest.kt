@@ -28,6 +28,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.Mockito
+import org.mockito.Mockito.`when`
 import org.mockito.junit.MockitoJUnitRunner
 
 @ExperimentalCoroutinesApi
@@ -55,14 +56,13 @@ class ListStoryViewModelTest {
     fun `set logout success`() = runTest {
         listStoryViewModel.logout()
         Mockito.verify(mockUserPreference).logout()
-        Assert.assertEquals(listStoryViewModel.logout(),
-            mockUserPreference.logout())
+
     }
 
     @Test
     fun `get session isLogin() success`() {
         val expectedIslogin = flowOf(dummySession)
-        Mockito.`when`(mockUserPreference.isLogin()).thenReturn(expectedIslogin)
+        `when`(mockUserPreference.isLogin()).thenReturn(expectedIslogin)
 
         val actualIslogin = listStoryViewModel.isLogin().getOrAwaitValue()
         Mockito.verify(mockUserPreference).isLogin()
